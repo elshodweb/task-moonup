@@ -1,8 +1,12 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Header = () => {
+  const navigate = useRouter();
+
   return (
     <header className="bg-white">
       <div className="container">
@@ -21,7 +25,9 @@ const Header = () => {
               href={"#"}
               className="p-1 pl-4 sm:pl-5  flex justify-between items-center w-[133px] bg-[#F1F1F3] rounded-md"
             >
-              <div className="text-[11px] sm:text-[13px] font-bold  ">Shohrux</div>
+              <div className="text-[11px] sm:text-[13px] font-bold  ">
+                Shohrux
+              </div>
               <Image
                 src="/person.svg"
                 width={32}
@@ -31,7 +37,12 @@ const Header = () => {
               />
             </Link>
 
-            <Link href={"#"}>
+            <button
+              onClick={() => {
+                localStorage.removeItem("tk-access");
+                navigate.push("/login");
+              }}
+            >
               <Image
                 src="/log-out.svg"
                 width={32}
@@ -39,7 +50,7 @@ const Header = () => {
                 alt="logout"
                 priority
               />
-            </Link>
+            </button>
           </div>
         </div>
       </div>
