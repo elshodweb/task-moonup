@@ -80,6 +80,7 @@ const page = () => {
             label="parol"
             placeholder="parol"
             className="mb-[22px]"
+            type="password"
           />
           <MyButton type="submit">Kirish</MyButton>
         </form>
