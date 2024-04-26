@@ -9,16 +9,16 @@ const ConfirmLogoutModal: React.FC<ConfirmLogoutModalProps> = ({
 }) => {
   return (
     <div className="fixed z-10 inset-0 overflow-y-auto">
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center min-h-screen max-[470px]:px-4 ">
         <div className="fixed inset-0 transition-opacity" aria-hidden="true">
           <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
         </div>
         <div className="relative bg-white rounded-lg shadow-lg">
-          <div className="p-8">
+          <div className="p-8 max-[470px]:px-4 ">
             <div className="mb-4 text-center text-gray-900 font-bold text-lg">
               Tizimda chiqish
             </div>
-            <div className="text-gray-700 text-justify">
+            <div className="text-gray-700 text-center">
               Haqiqatan ham tizimdan chiqmoqchimisiz?
             </div>
             <div className="mt-6 flex justify-center">
