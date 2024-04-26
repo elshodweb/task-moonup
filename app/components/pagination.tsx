@@ -23,12 +23,12 @@ const Pagination = () => {
   const calc = pageSize * (currentPage - 1);
 
   return (
-    <div className="flex justify-between items-center mt-7">
+    <div className="flex justify-between items-center mt-7 max-[660px]:flex-col gap-4 ">
       <div className="text-[15px] ">
         {totalItems} tadan {1 + calc}-{pageSize + calc} ko‘rsatilmoqda
       </div>
 
-      <div className="flex justify-center items-center gap-2">
+      <div className="flex justify-center items-center gap-2 max-[370px]:flex-col gap-4 ">
         <div className="flex justify-center items-center gap-[12px] text-[15px]">
           <label htmlFor="select-size">Ko‘rsatish</label>
           <select
@@ -87,7 +87,6 @@ const Pagination = () => {
               (currentPage === totalPages ? "bg-[#DFE3E8]" : "")
             }
             onClick={() => {
-
               if (currentPage < totalPages) {
                 changeCurrentPage(currentPage + 1);
               }
