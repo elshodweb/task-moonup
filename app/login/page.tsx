@@ -32,7 +32,7 @@ const page = () => {
           localStorage.setItem("tk-access", response.data.access);
           localStorage.setItem("tk-refresh", response.data.refresh);
         }
-        navigate.push("/admin/dashboard");
+        navigate.push("/admin/homiylar");
       })
       .catch((error) => {
         if(error){
