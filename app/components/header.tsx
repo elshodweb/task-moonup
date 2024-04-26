@@ -1,17 +1,24 @@
-"use client";
+'use client';
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React from "react";
+import ConfirmLogoutModal from "./modal-logout";
 
 const Header = () => {
   const navigate = useRouter();
+  const [showConfirmLogoutModal, setShowConfirmLogoutModal] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem("tk-access");
+    navigate.push("/login");
+  };
 
   return (
     <header className="bg-white">
       <div className="container">
         <div className="flex justify-between items-center gap-3 py-3">
-          <Link href={"#"} className="">
+          <Link href={"#"}>
             <Image
               src="/logo.png"
               width={173}
@@ -37,12 +44,7 @@ const Header = () => {
               />
             </Link>
 
-            <button
-              onClick={() => {
-                localStorage.removeItem("tk-access");
-                navigate.push("/login");
-              }}
-            >
+            <button onClick={() => setShowConfirmLogoutModal(true)}>
               <Image
                 src="/log-out.svg"
                 width={32}
@@ -54,6 +56,12 @@ const Header = () => {
           </div>
         </div>
       </div>
+      {showConfirmLogoutModal && (
+        <ConfirmLogoutModal
+          onConfirm={handleLogout}
+          onCancel={() => setShowConfirmLogoutModal(false)}
+        />
+      )}
     </header>
   );
 };

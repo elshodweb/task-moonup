@@ -5,12 +5,14 @@ import MyInput from "../components/my-input";
 import MyButton from "../components/my-button";
 import axiosInstance from "../api/axiosInstance";
 import { useRouter } from "next/navigation";
+import ErrorModal from "../components/modal";
 interface formDataProps {
   username: string;
   password: string;
 }
 const page = () => {
   const navigate = useRouter();
+  const [error, setError] = useState("");
 
   const [formData, setFormData] = useState<formDataProps>({
     username: "metsenatadmin",
@@ -33,8 +35,14 @@ const page = () => {
         navigate.push("/admin/dashboard");
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        if(error){
+          setError("Kirishda xatolig ketti! Login yokiy parol xato. Iltimos, kiritilgan ma'lumotlarni tekshiring.");
+        }
       });
+  };
+
+  const closeErrorModal = () => {
+    setError("");
   };
 
   return (
@@ -76,6 +84,7 @@ const page = () => {
           <MyButton type="submit">Kirish</MyButton>
         </form>
       </div>
+      {error && <ErrorModal message={error} onClose={closeErrorModal} />}
     </div>
   );
 };

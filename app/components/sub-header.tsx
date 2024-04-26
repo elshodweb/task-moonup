@@ -1,13 +1,21 @@
 "use client";
 import React, { useState } from "react";
 import SwitcherTab from "./switcher-tab";
-import Image from "next/image";
+import { Dispatch } from "@reduxjs/toolkit";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getSponsors,
+  setFilter,
+  setPagination,
+} from "../store/homiylar/sponsorsSlice";
+import { stateProps } from "../store/config-store";
 
 interface formDataProps {
   search: string;
   filter: string;
 }
 const SubHeader = () => {
+  const dispatch: Dispatch<any> = useDispatch();
   const [sort, setSort] = useState<formDataProps>({
     search: "",
     filter: "",
@@ -33,10 +41,24 @@ const SubHeader = () => {
                 setSort({ ...sort, search: e.target.value });
               }}
             />
-            <button className="flex justify-center items-center p-[12px] gap-[10px] bg-[#EDF1FD] w-[123px] rounded-md text-[#3365FC]  font-medium text-[14px] ">
-              <Image alt="filter" src="/filter.svg" width={16} height={16} />
-              <span>Filter</span>
-            </button>
+            <select
+              className="flex justify-center items-center p-[4px] gap-[10px] bg-[#EDF1FD] bg-[url(/filter.svg)] bg-no-repeat   rounded-md text-[#3365FC]  font-medium text-[14px] pl-[30px]"
+              style={{
+                backgroundPosition: "12px 50%",
+              }}
+              onChange={(e) => {
+                dispatch(setFilter(e.target.value));
+                dispatch(getSponsors(""));
+              }}
+            >
+              <option value="">Filter</option>
+              <option value="id">Id</option>
+              <option value="full_name">I.F.SH</option>
+              <option value="phone">Telefon</option>
+              <option value="sum">Homiylik</option>
+              <option value="spent">Sarf</option>
+              <option value="created_at">Sana</option>
+            </select>
           </div>
         </div>
       </div>

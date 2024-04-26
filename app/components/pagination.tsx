@@ -28,7 +28,7 @@ const Pagination = () => {
         {totalItems} tadan {1 + calc}-{pageSize + calc} ko‘rsatilmoqda
       </div>
 
-      <div className="flex justify-center items-center gap-2 max-[370px]:flex-col gap-4 ">
+      <div className="flex justify-center items-center gap-2 max-[370px]:flex-col  ">
         <div className="flex justify-center items-center gap-[12px] text-[15px]">
           <label htmlFor="select-size">Ko‘rsatish</label>
           <select

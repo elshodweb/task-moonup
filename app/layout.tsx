@@ -27,7 +27,7 @@ export default function RootLayout({
         })
         .then((res) => {
           if (res.status === 200) {
-            navigate.push("/admin/homiylar");
+            navigate.push("/sponsors/1703");
           } else {
             navigate.push("/login");
           }

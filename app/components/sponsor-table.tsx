@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { stateProps } from "../store/config-store";
 import dayjs from "dayjs";
+import Link from "next/link";
 interface TableProps {}
 const SponsorTable: React.FC<TableProps> = () => {
   const sponsors = useSelector((state: stateProps) => state.sponsors.sponsors);
@@ -56,9 +57,9 @@ const SponsorTable: React.FC<TableProps> = () => {
                 {s.get_status_display}
               </td>
               <td className="pr-[14px]">
-                <button>
+                <Link href={"/sponsors/" + s.id}>
                   <Image alt="filter" src="/eye.svg" width={24} height={24} />
-                </button>
+                </Link>
               </td>
             </tr>
           ))}
