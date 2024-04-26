@@ -15,8 +15,8 @@ const page = () => {
   const [error, setError] = useState("");
 
   const [formData, setFormData] = useState<formDataProps>({
-    username: "metsenatadmin",
-    password: "uF9aH1vZ3bV2kN2y",
+    username: "",
+    password: "",
   });
 
   const submit = (e: FormEvent<HTMLFormElement>) => {

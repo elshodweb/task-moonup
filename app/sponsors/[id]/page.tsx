@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import axiosInstance from "@/app/api/axiosInstance";
-import { error } from "console";
+
 interface SingleSponsorProps {
   params: {
     id: string;
