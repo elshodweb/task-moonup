@@ -1,13 +1,13 @@
 "use client";
-import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
 import "./globals.css";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axiosInstance from "./api/axiosInstance";
+import { store } from "./store/config-store";
+import { Provider } from "react-redux";
 
 const rubik = Rubik({ subsets: ["latin"] });
-
 
 export default function RootLayout({
   children,
@@ -27,7 +27,7 @@ export default function RootLayout({
         })
         .then((res) => {
           if (res.status === 200) {
-            navigate.push("/admin/dashboard");
+            navigate.push("/admin/homiylar");
           } else {
             navigate.push("/login");
           }
@@ -60,7 +60,7 @@ export default function RootLayout({
           <title>metsenat</title>
         </head>
         <body className={rubik.className} suppressHydrationWarning={true}>
-          {children}
+          <Provider store={store}>{children}</Provider>
         </body>
       </html>
     );
